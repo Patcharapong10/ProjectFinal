@@ -1,0 +1,11 @@
+{% block styles %}
+<link
+  href="{{ url_for ('static', filename='css/style.css') }}"
+  rel="stylesheet"
+/>
+
+{% endblock %}
+<!-- scripts -->
+{% block scripts %}
+<script src="{{ url_for ('static', filename='statc/js/script.js') }}"></script>
+{% endblock %}
