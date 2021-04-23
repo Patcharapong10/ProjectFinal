@@ -19,9 +19,14 @@
 </head>
 <body>
   <header> 
-      <font1>Milk For You</font1>
+      <font1>Meal For You</font1>
+    <font1>{{ ses }}</font1>
   </header>
   <div id = "MM4">
+    
+    {%if email is defined %}
+     Logged in {{email}}<a href="/logout">Logout</a>
+     {% endif %}
     <button style="float:right"><a href="logout.php">   Logout   </a></button>
     <button style="float:right"><a href="logout.php">   Logout   </a></button>
     <button style="float:right"><a href="logout.php">   Logout   </a></button>

@@ -17,7 +17,9 @@ def index():
 
 @app.route("/menu")
 def menu():
-    return render_template("menu.html")
+    if 'email' in session:
+        ses = 'You are logged in as ' + session['email']
+    return render_template("menu.html" , ses = ses)
 
 @app.route("/Register")
 def Register():
@@ -60,6 +62,11 @@ def register():
         return render_template('index.html')
 
     return render_template('Register.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('email', None)
+    return redirect(url_for('index'))
 
 ###############################################################################################################################################################################################
 
