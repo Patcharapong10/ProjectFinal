@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Find Meal For Your Ingredients</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
-  <link rel = "stylesheet" href = "css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+    crossorigin="anonymous" />
+  <link rel="stylesheet" href="css/style.css">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
   {% include 'MainCSJS.html' %}
   <style>
     .right {
@@ -13,44 +17,56 @@
       right: 0px;
       width: 150px;
       padding: 5px;
-      font-size:larger;
+      font-size: larger;
     }
-    </style>
+  </style>
 </head>
+
 <body>
-  <header> 
-      <font1>Meal For You</font1>
+  <header>
+    <font1>Meal For You</font1>
     <font1>{{ ses }}</font1>
   </header>
-  <div id = "MM4">
+  <div id="MM4">
+
     
-    {%if email is defined %}
-     Logged in {{email}}<a href="/logout">Logout</a>
-     {% endif %}
-    <button style="float:right"><a href="/logout">   Logout   </a></button>
-    <button style="float:right"><a href="logout.php">   Logout   </a></button>
-    <button style="float:right"><a href="logout.php">   Logout   </a></button>
-  </div>
-  
-  <div class = "container">
-      <div class = "meal-wrapper">
-        <div class = "meal-search">
-          <h2 class = "title">Find Meals For Your Ingredients</h2>
-          <blockquote>Real food doesn't have ingredients, real food is ingredients.<br>
-            <cite>- Jamie Oliver</cite>
-          </blockquote>
-  
-          <div class = "meal-search-box">
-            <input type = "text" class = "search-control" placeholder="Enter an ingredient" id = "search-input">
-            <button type = "submit" class = "search-btn btn" id = "search-btn">
-              <i class = "fas fa-search"></i>
-            </button>
-          </div>
+      <div class="row"></div>
+        <div class="col-md-8">&nbsp;</div>
+        <div class="col-md-4">
+          <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a class="nav-link active" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Feature</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">Logout</a>
+            </li>
+          </ul>
         </div>
-  
-        <div class = "meal-result">
-          <h2 class = "title">Your Search Results:</h2>
-          <div id= "meal">
+      </div>
+    
+  </div>
+
+  <div class="container">
+    <div class="meal-wrapper">
+      <div class="meal-search">
+        <h2 class="title">Find Meals For Your Ingredients</h2>
+        <blockquote>Real food doesn't have ingredients, real food is ingredients.<br>
+          <cite>- Jamie Oliver</cite>
+        </blockquote>
+
+        <div class="meal-search-box">
+          <input type="text" class="search-control" placeholder="Enter an ingredient" id="search-input">
+          <button type="submit" class="search-btn btn" id="search-btn">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+
+        <div class="meal-result">
+          <h2 class="title">Your Search Results:</h2>
+          <div id="meal">
             <!-- meal item -->
             <!-- <div class = "meal-item">
               <div class = "meal-img">
@@ -64,16 +80,16 @@
             <!-- end of meal item -->
           </div>
         </div>
-  
-  
-        <div class = "meal-details">
+
+
+        <div class="meal-details">
           <!-- recipe close btn -->
-          <button type = "button" class = "btn recipe-close-btn" id = "recipe-close-btn">
-            <i class = "fas fa-times"></i>
+          <button type="button" class="btn recipe-close-btn" id="recipe-close-btn">
+            <i class="fas fa-times"></i>
           </button>
-  
+
           <!-- meal content -->
-          <div class = "meal-details-content">
+          <div class="meal-details-content">
             <!-- <h2 class = "recipe-title">Meals Name Here</h2>
             <p class = "recipe-category">Category Name</p>
             <div class = "recipe-instruct">
@@ -92,9 +108,12 @@
       </div>
     </div>
     <div id="MM4">
-  
-  </div>
 
-  <script src = "/static/js/script.js"></script>
+    </div>
+
+    <script src="/static/js/script.js"></script>
+    <script src="js/jquery-1.12.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
 </body>
+
 </html>
