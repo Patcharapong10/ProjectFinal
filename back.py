@@ -18,7 +18,7 @@ def index():
 @app.route("/menu")
 def menu():
     if 'email' in session:
-        ses = 'You are logged in as ' + session['email']
+        ses =  'You are logged in as ' + session['email']
     return render_template("menu.html" , ses = ses)
 
 @app.route("/Register")
@@ -56,7 +56,7 @@ def register():
             hashpass = bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt())
             emaila = request.form['email']
             users.insert_one({'username' : request.form['username'], 'password' : hashpass , 'email':emaila})
-            session['username'] = request.form['username']
+            session['email'] = request.form['email']
             return redirect(url_for('index'))
         
         return render_template('index.html')
