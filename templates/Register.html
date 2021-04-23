@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="css/style.css" rel="stylesheet">
+{% include 'MainCSJS.html' %}
+</head>
+<body>
+
+	<form id="register" class="edd_form" action="/register" method="POST">
+        <fieldset id="edd_checkout_user_info">
+            <legend>Personal Info</legend>
+            <p id="edd-email-wrap">
+                <label class="edd-label" for="edd-email">
+        Email Address <span class="edd-required-indicator">*</span></label>
+                <input class="edd-input required" type="text" name="email" placeholder="Email address" id="edd-email" value="">
+            </p>
+            <p id="edd-first-name-wrap">
+                <label class="edd-label" for="edd-first">
+        First Name <span class="edd-required-indicator">*</span>
+        </label>
+                <input class="edd-input required" type="text" name="username" placeholder="First name" id="edd-first" value="" required="">
+            </p>
+            <p id="edd-last-name-wrap">
+                <label class="edd-label" for="edd-last">
+        Password </label>
+                <input class="edd-input" type="password" name="password" placeholder="Password" value="">
+            </p>
+            <p id="edd-last-name-wrap">
+                <label class="edd-label" for="edd-last">
+        Coin </label>
+                <input class="edd-input" type="text" name="coin" placeholder="Coin" value="">
+            </p>
+            <p id="edd-email-wrap">
+                <label class="edd-label" for="edd-email">
+        Address <span class="edd-required-indicator">*</span></label>
+                <input class="edd-input required" type="text" name="address" placeholder="Address" value="">
+            </p>
+
+
+            <input type="hidden" name="edd_action" value="purchase">
+            <input type="hidden" name="edd-gateway" value="manual">
+            <input type="submit" class="edd-submit button" id="edd-purchase-button" name="edd-purchase" value=" OK ">
+
+        </fieldset>
+    </form>
+	
+</body>
+</html>
