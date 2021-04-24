@@ -25,6 +25,10 @@ def menu():
 def Register():
     return render_template("Register.html")
 
+
+@app.route("/test")
+def test():
+    return render_template("test.html")
 ########################################################################### LOGIN ###############################################################################################################
 @app.route("/login")
 def login():
