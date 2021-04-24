@@ -6,72 +6,69 @@
   <title>Find Meal For Your Ingredients</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA==" crossorigin="anonymous" />
   <link rel = "stylesheet" href = "css/style.css">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
   {% include 'MainCSJS.html' %}
 </head>
 <body>
-  
-  <div class = "container">
-    <div class = "meal-wrapper">
-      <div class = "meal-search">
-        <h2 class = "title">Find Meals For Your Ingredients</h2>
-        <blockquote>Real food doesn't have ingredients, real food is ingredients.<br>
-          <cite>- Jamie Oliver</cite>
-        </blockquote>
-
-        <div class = "meal-search-box">
-          <input type = "text" class = "search-control" placeholder="Enter an ingredient" id = "search-input">
-          <button type = "submit" class = "search-btn btn" id = "search-btn">
-            <i class = "fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-
-      <div class = "meal-result">
-        <h2 class = "title">Your Search Results:</h2>
-        <div id= "meal">
-          <!-- meal item -->
-          <!-- <div class = "meal-item">
-            <div class = "meal-img">
-              <img src = "food.jpg" alt = "food">
+      <div class="container">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container-fluid">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="#">WebSiteName</a>
             </div>
-            <div class = "meal-name">
-              <h3>Potato Chips</h3>
-              <a href = "#" class = "recipe-btn">Get Recipe</a>
+            <ul class="nav navbar-nav navbar-right">
+              {{ ses }}
+              <li><a href="#"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+              <li><a href="#"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+      <div class="container">
+          <div class="row" style="padding-top: 10rem;">
+            <h2 class="text-center"><strong>Search something</strong></h2>
+          </div>
+          <div class="row" style="padding-top: 4rem;">
+            <div class="col-md-4"></div>
+              <div class="col-md-4">
+                <div class="input-group">
+                  <input type="text" class="form-control" placeholder="Search" id="search-input">
+                  <span class="input-group-btn">
+                    <button class="btn btn-primary" type="button" id="btn-search">
+                      <span class="glyphicon glyphicon-search"></span>Go
+                    </button>
+                  </span>
+                </div>
+              </div>
+            <div class="col-md-4"></div>
+          </div>
+      </div>
+      <div class="row" style="padding-top: 4rem;">
+        <h3 class="text-center"><strong>Searching result</strong></h3>
+      </div>
+      <div id="meal">
+
+      </div>
+        <div class="container-fluid" style="padding-top: 3rem;">
+          <div class="meal-wrapper">
+            <div id="ongrid">
+
             </div>
-          </div> -->
-          <!-- end of meal item -->
+          </div>
         </div>
       </div>
+      <div id="DesModal" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+          <!-- Modal content-->
+          <div class="modal-content">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <div class="modal-header">
 
-
-      <div class = "meal-details">
-        <!-- recipe close btn -->
-        <button type = "button" class = "btn recipe-close-btn" id = "recipe-close-btn">
-          <i class = "fas fa-times"></i>
-        </button>
-
-        <!-- meal content -->
-        <div class = "meal-details-content">
-          <!-- <h2 class = "recipe-title">Meals Name Here</h2>
-          <p class = "recipe-category">Category Name</p>
-          <div class = "recipe-instruct">
-            <h3>Instructions:</h3>
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo blanditiis quis accusantium natus! Porro, reiciendis maiores molestiae distinctio veniam ratione ex provident ipsa, soluta suscipit quam eos velit autem iste!</p>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Amet aliquam voluptatibus ad obcaecati magnam, esse numquam nisi ut adipisci in?</p>
+            </div>
           </div>
-          <div class = "recipe-meal-img">
-            <img src = "food.jpg" alt = "">
-          </div>
-          <div class = "recipe-link">
-            <a href = "#" target = "_blank">Watch Video</a>
-          </div> -->
-        </div>
-      </div>
-    </div>
-  </div>
 
-
-
+  <script src="/static/js/bootstrap.min.js"></script>
+  <script src="/static/js/jquery-1.12.4.min.js"></script>
   <script src = "/static/js/script.js"></script>
 </body>
 </html>

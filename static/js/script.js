@@ -1,77 +1,77 @@
-const searchBtn = document.getElementById('search-btn');
-const mealList = document.getElementById('meal');
-const mealDetailsContent = document.querySelector('.meal-details-content');
-const recipeCloseBtn = document.getElementById('recipe-close-btn');
-
-// event listeners
-searchBtn.addEventListener('click', getMealList);
-mealList.addEventListener('click', getMealRecipe);
-recipeCloseBtn.addEventListener('click', () => {
-    mealDetailsContent.parentElement.classList.remove('showRecipe');
-});
+const List = document.getElementById('ongrid')
+const btnSearch = document.getElementById('btn-search')
+// const mealDetailsContent = document.querySelector('.modal-header')
+const mealDetailsContent = document.querySelector('.modal-header');
 
 
-// get meal list that matches with the ingredients
-function getMealList(){
-    let searchInputTxt = document.getElementById('search-input').value.trim();
-    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInputTxt}`)
-    .then(response => response.json())
-    .then(data => {
-        let html = "";
-        if(data.meals){
-            data.meals.forEach(meal => {
-                html += `
-                    <div class = "meal-item" data-id = "${meal.idMeal}">
-                        <div class = "meal-img">
-                            <img src = "${meal.strMealThumb}" alt = "food">
-                        </div>
-                        <div class = "meal-name">
-                            <h3>${meal.strMeal}</h3>
-                            <a href = "#" class = "recipe-btn">Get Recipe</a>
+btnSearch.addEventListener('click', getMealList);
+List.addEventListener('click', getMealRecipe);
+
+getMealList();
+
+
+function getMealList() {
+    let searchInput = document.getElementById('search-input').value.trim();
+    console.log("Input", searchInput);
+    fetch(`https://www.themealdb.com/api/json/v1/1/filter.php?i=${searchInput}`)
+        .then(response => response.json())
+        .then(data => {
+            // console.log(data);
+            let html = "";
+            if (data.meals) {
+                data.meals.forEach(meal => {
+                    // console.log(meal);
+                    html += `
+                    <div class="card"  data-id="${meal.idMeal}"">
+                        <img src="${meal.strMealThumb}" class="card-img-top imageborder" alt="..." style="width: 100%;">
+                        <div class="card-body" style="padding-bottom: 2rem;">
+                        <h2 class="card-title">${meal.strMeal}</h2>
+                        <a href="#" class="btn btn-primary btn_border recipe-btn" data-toggle="modal" data-target="#DesModal">Go somewhere
+                            <br></a>
                         </div>
                     </div>
                 `;
-            });
-            mealList.classList.remove('notFound');
-        } else{
-            html = "Sorry, we didn't find any meal!";
-            mealList.classList.add('notFound');
-        }
-
-        mealList.innerHTML = html;
-    });
+                });
+                List.classList.remove('notFound')
+            } else {
+                html = "Sorray, we didn't find any meal!";
+                List.classList.add('notFound')
+            }
+            List.innerHTML = html;
+        })
 }
-getMealList()
 
-// get recipe of the meal
-function getMealRecipe(e){
+function getMealRecipe(e) {
+    console.log('GetMealRecipe');
     e.preventDefault();
-    if(e.target.classList.contains('recipe-btn')){
+    if (e.target.classList.contains('recipe-btn')) {
         let mealItem = e.target.parentElement.parentElement;
+        console.log(mealItem);
         fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${mealItem.dataset.id}`)
-        .then(response => response.json())
-        .then(data => mealRecipeModal(data.meals));
+            .then(response => response.json())
+            .then(data => mealRecipeModal(data.meals));
     }
 }
 
-// create a modal
-function mealRecipeModal(meal){
+function mealRecipeModal(meal) {
     console.log(meal);
     meal = meal[0];
     let html = `
-        <h2 class = "recipe-title">${meal.strMeal}</h2>
-        <p class = "recipe-category">${meal.strCategory}</p>
-        <div class = "recipe-instruct">
-            <h3>Instructions:</h3>
-            <p>${meal.strInstructions}</p>
-        </div>
-        <div class = "recipe-meal-img">
-            <img src = "${meal.strMealThumb}" alt = "">
-        </div>
-        <div class = "recipe-link">
-            <a href = "${meal.strYoutube}" target = "_blank">Watch Video</a>
-        </div>
+        <h2 class="modal-title text-center"><strong>${meal.strMeal}</strong></h2>
+        <br>
+        <h4 class="text-center"><kbd>${meal.strCategory}</kbd></h4>
+      <div class="modal-body">
+        <h3 class="text-center"><Strong>Instructions:</Strong></h3>
+        <br>
+        <h4 class="text-center">
+            ${meal.strInstructions}
+        </h4>
+      </div>
+      <div class="modal-footer">
+        <h1 class="text-center"><strong><a href="${meal.strYoutube}">Watch Video</a></strong></h1>
+      </div>
+    </div>
     `;
     mealDetailsContent.innerHTML = html;
-    mealDetailsContent.parentElement.classList.add('showRecipe');
+
 }
