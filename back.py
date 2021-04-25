@@ -40,10 +40,15 @@ def login():
 @app.route('/loginBackend', methods=['POST'])
 def loginBackend():
     users = db.customer
+    email = request.form.get("email")
+    password = request.form.get("password")
     login_user = users.find_one({'email': request.form['email']})
 
     if login_user:
-        if bcrypt.hashpw(request.form['password'].encode('utf-8'), bcrypt.gensalt()):
+        email_val = login_user['email']
+        passwordcheck = login_user['password']
+
+        if bcrypt.checkpw(password.encode('utf-8'),passwordcheck):
             session['email'] = request.form['email']
             return redirect(url_for('menu'))
 
